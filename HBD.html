@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Wishes!</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Harrington', cursive;
+            color: white;
+            overflow: hidden;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('00.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+
+        #main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+            display: none;
+            background-size: cover;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        #typingText {
+            font-size: 3em;
+            color: black;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid black;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+            font-weight: bold;
+            font-family: 'Harrington', cursive;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 40px;
+            animation: bounce 1s ease-in-out infinite alternate;
+            font-family: 'Harrington', cursive;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        .wishes-container {
+            background-color: rgba(106, 13, 173, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .wish-title {
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .wish-title:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .detail-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('p.jpg');
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .go-back-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #6a0dad;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .go-back-button:hover {
+            background-color: #6a0dad;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .wishes-container {
+                padding: 15px;
+            }
+
+            .wish-title {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="overlay">
+        <div id="typingText"></div>
+    </div>
+
+    <div id="main">
+        <h1 id="birthdayHeading">Happy Birthday!</h1>
+        <div class="wishes-container">
+            <div class="wish-title" data-message="“Happy birthday to the one who always lifts my spirits. Cheers to many more years of laughter and good times together!”">Manhoos Esa Kesy</div>
+            <div class="wish-title" data-message="“Wishing you a day filled with love, cake, joy, and all the other wonderful things you deserve. Have a great birthday, Zoha.”">Ya Wala Nahi</div>
+            <div class="wish-title" data-message="“On your special day, I want to take a moment to let you know how much I cherish our friendship. Happy birthday to someone who brings so much warmth into my life.”">Shyad Open Na Ho</div>
+            <div class="wish-title" data-message="“Cheers to another year of shared memories, unforgettable adventures, and endless laughter. Happy birthday, my ova.”!">Esa Rahna Do</div>
+            <div class="wish-title" data-message="“Wishing you a fabulous birthday surrounded by love, joy, and all the things that make you smile. You deserve everything wonderful today and always.”">Tumra Liya Thori Ha</div>
+            <div class="wish-title" data-message="“Wishing a happy, happy birthday to my sunshine and bestie. The world is a brighter, better place with you in it. Enjoy your special day.”">Nahi Bilkul Nahi Open Krna</div>
+            <div class="wish-title" data-message="“Happy birthday! Remember, you’re not 40, you’re 18 with 22 years of experience.”">Es Ke Ijzat Ha</div>
+            <div class="wish-title" data-message="“Wishing you a day as bright as your smile, as wild as your spirit, and as funny as your jokes. Happy birthday, my incredibly entertaining bestie!”">Es ke Ijazt Nahi</div>
+            <div class="wish-title" data-message="“On your birthday, I want to remind you of how incredible and strong you are. Here’s to another year of growth and grace. Happy birthday!”">Q Bhae Mat Kholo</div>
+            <div class="wish-title" data-message="Es ma kuch bee nahi ha. Manhoos Zalil Happy Brithday. Or bhae Ya sab hota rah ga mere treat? Shyad tujha psnd na aya ho wish k trka toh sorry! ">Ab Sare Open Kr Le Esa Bee Kr Lo</div>
+        </div>
+    </div>
+
+    <div class="detail-container" id="detail">
+        <h1 id="detailMessage"></h1>
+        <button id="goBackButton" class="go-back-button">Go Back</button>
+    </div>
+
+    <script>
+        const overlay = document.getElementById('overlay');
+        const mainContainer = document.getElementById('main');
+        const typingText = document.getElementById('typingText');
+
+        const initialMessages = ["Hi Zoha!", "Zada kuch nahi ha!", "Bas yahi tha toh naraz mat hona!", "Hehehehehehehehe!", "Wish sa phly ya bata thek to ha na?", "Each wish is special for my bestie"];
+        const welcomeMessage = "Welcome to the Birthday Celebration!";
+        
+        const typingSpeed = 100;
+        const initialMessageDuration = 1500;
+
+        let currentIndex = 0;
+        let bubbleInterval;
+
+        const images = [
+            'n1.jpg',
+            'n2.jpg',
+            'n3.jpg'
+        ];
+        let currentImageIndex = 0;
+
+        function typeText(text, callback) {
+            typingText.textContent = '';
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    typingText.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, typingSpeed);
+                } else {
+                    typingText.style.borderRight = 'none';
+                    if (callback) callback();
+                }
+            }
+
+            type();
+        }
+
+        function showInitialMessages() {
+            if (currentIndex < initialMessages.length) {
+                typeText(initialMessages[currentIndex], () => {
+                    setTimeout(() => {
+                        currentIndex++;
+                        showInitialMessages();
+                    }, initialMessageDuration);
+                });
+            } else {
+                setTimeout(() => {
+                    typeText(welcomeMessage, () => {
+                        overlay.style.opacity = '0';
+                        setTimeout(() => {
+                            overlay.style.display = 'none';
+                            mainContainer.style.display = 'flex';
+                            mainContainer.style.opacity = '1';
+                            startImageAnimation();
+                        }, 1000);
+                    });
+                }, 500);
+            }
+        }
+
+        function changeBackgroundImage() {
+            const nextImageIndex = (currentImageIndex + 1) % images.length;
+            mainContainer.style.transition = 'background-image 1s ease-in-out';
+            mainContainer.style.backgroundImage = `url(${images[nextImageIndex]})`;
+            currentImageIndex = nextImageIndex;
+        }
+
+        function startImageAnimation() {
+            mainContainer.style.backgroundImage = `url(${images[currentImageIndex]})`;
+            setInterval(changeBackgroundImage, 5000);
+        }
+
+        const wishTitles = document.querySelectorAll('.wish-title');
+        const detailContainer = document.getElementById('detail');
+        const detailMessage = document.getElementById('detailMessage');
+
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+
+            const bubbleColors = [
+                '#d26ff2', '#f06ff2', '#f26f90', '#7ff5c2', '#5cd681', '#c8d65c', '#e03f3f',
+                '#800080', '#D3A4D5', '#ADD8E6', '#FFB6C1'
+            ];
+
+            const randomColor = bubbleColors[Math.floor(Math.random() * bubbleColors.length)];
+
+            const size = Math.random() * 50 + 10;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.backgroundColor = randomColor;
+            bubble.style.left = `${Math.random() * 100}vw`;
+            bubble.style.top = '-50px';
+            bubble.style.opacity = '1';
+
+            document.body.appendChild(bubble);
+
+            requestAnimationFrame(() => {
+                bubble.style.transition = 'transform 3s linear, opacity 3s linear';
+                bubble.style.transform = `translateY(${window.innerHeight}px)`;
+                bubble.style.opacity = '0';
+            });
+
+            bubble.addEventListener('transitionend', () => {
+                bubble.remove();
+            });
+        }
+
+        function startBubbles() {
+            bubbleInterval = setInterval(() => {
+                createBubble();
+            }, 150);
+        }
+
+        function stopBubbles() {
+            clearInterval(bubbleInterval);
+        }
+
+        wishTitles.forEach((wishTitle) => {
+            wishTitle.addEventListener('click', () => {
+                const message = wishTitle.getAttribute('data-message');
+                detailMessage.textContent = message;
+                detailContainer.style.display = 'flex';
+                mainContainer.style.display = 'none';
+
+                startBubbles();
+            });
+        });
+
+        document.getElementById('goBackButton').addEventListener('click', () => {
+            detailContainer.style.display = 'none';
+            mainContainer.style.display = 'flex';
+
+            stopBubbles();
+        });
+
+        showInitialMessages();
+    </script>
+</body>
+</html>
